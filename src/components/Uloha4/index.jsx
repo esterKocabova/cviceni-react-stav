@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './carousel.css';
 
 /*
@@ -20,21 +21,38 @@ Bonus: Pozor na krajní hodnoty. Pokud dojdete na konec nebo začátek pole, tak
   https://source.unsplash.com/7go5UASxmDY/880x500
   https://source.unsplash.com/YmATDIFsCmQ/880x500
 */
+const adresyObrazku = [
+  ('https://source.unsplash.com/WLUHO9A_xik/880x500'),
+  ('https://source.unsplash.com/DA1eGglMmlg/880x500'),
+  ('https://source.unsplash.com/kTxL6le0Wgk/880x500'),
+  ('https://source.unsplash.com/7go5UASxmDY/880x500'),
+  ('https://source.unsplash.com/YmATDIFsCmQ/880x500'),
+]
 
 export const Uloha4 = () => {
+  const [index, setIndex] = useState(0)
+
+  const predchozi = () => {
+    index > 0? setIndex(index-1) : setIndex(0)
+  }
+
+  const dalsi = () => {
+    index < adresyObrazku.length - 1  ? setIndex(index+1) : setIndex(4)
+  }
+
   return (
     <div className="carousel">
-      <button className="carousel__predchozi" aria-label="předchozí">
+      <button onClick={predchozi} className="carousel__predchozi" aria-label="předchozí">
         ←
       </button>
       <div className="carousel__media">
         <img
           className="carousel__image"
-          src="https://source.unsplash.com/7go5UASxmDY/880x500"
+          src= {adresyObrazku[index]}
           alt=""
         />
       </div>
-      <button className="carousel__dalsi" aria-label="další">
+      <button onClick={dalsi}className="carousel__dalsi" aria-label="další">
         →
       </button>
     </div>
