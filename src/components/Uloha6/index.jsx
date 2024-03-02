@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import './ukol.css'
 
 /*
@@ -11,10 +12,11 @@ Bonus: Nastav jednotlivým položkám ve výpisu `key`, aby vývojářské nást
 */
 
 const Ukol = ({ nazev }) => {
+  const [ukolSplnen, setUkolSplnen] = useState(false)
   return (
-    <li className="ukol">
+    <li className={`ukol ${ukolSplnen ? 'ukol--splnen' : '' }`}>
       <span className="ukol__nazev">{nazev}</span>
-      <button className="ukol__akce">splnit</button>
+      <button onClick={() => setUkolSplnen(true)} className="ukol__akce">splnit</button>
     </li>
   )
 }
@@ -22,5 +24,5 @@ const Ukol = ({ nazev }) => {
 export const Uloha6 = () => {
   const ukoly = ['Zamést', 'Pověsit prádlo', 'Umýt okna', 'Vynést koš']
 
-  return <ul>{ukoly}</ul>
+  return <ul>{ukoly.map((ukol, index) => (<Ukol key={index} nazev={ukol}/>))}</ul>
 }
