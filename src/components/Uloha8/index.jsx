@@ -9,23 +9,23 @@ import { useState } from "react"
 export const Uloha8 = () => {
   const [prsiVBrne, setPrsiVBrne] = useState('mozna')
 
-  // const zmenitStav = () => {
-  //   if (prsiVBrne === 'mozna') {
-  //     setPrsiVBrne('ano')
-  //   } 
-  //   else if (prsiVBrne === 'ano') {
-  //       setPrsiVBrne('ne')
-  //   } 
-  //   else {
-  //     setPrsiVBrne('mozna')
-  //   }
-  //   }
+  const zmenitStav = () => {
+    if (prsiVBrne === 'mozna') {
+      setPrsiVBrne('ano')
+    } 
+    else if (prsiVBrne === 'ano') {
+        setPrsiVBrne('ne')
+    } 
+    else {
+      setPrsiVBrne('mozna')
+    }
+    }
   
 
   return (
     <>
       <h3>Prší v Brně: {prsiVBrne}</h3>
-      <button onClick={() => setPrsiVBrne('ano')}>změnit</button>
+      <button onClick={zmenitStav}>změnit</button>
     </>
   )
 }
